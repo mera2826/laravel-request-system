@@ -101,3 +101,7 @@ Each request contains created_at and updated_at timestamps.
 Quantity and Status Explanation
 The request quantity must be greater than zero because a request should represent an actual amount being requested. Although an unsigned integer prevents negative values, it still permits zero. Therefore, the sample requests use positive quantities. Application-level validation for the positive-quantity rule will be implemented in a later laboratory.
 A new request begins with pending status because it has been submitted but has not yet been reviewed or processed by staff.
+
+## Laboratory 3 Verification
+
+Verification instruction: Follow the required access checks.
