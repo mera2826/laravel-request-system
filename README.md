@@ -104,4 +104,4 @@ A new request begins with pending status because it has been submitted but has n
 
 ## Laboratory 3 Verification
 
-Verification instruction: Follow the required access checks.
+Verification instruction: Test administrator access and administrator-only status updates.
