@@ -1,3 +1,4 @@
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -18,10 +19,12 @@
                 <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
                     <h3 class="text-lg font-semibold">Request List</h3>
 
-                    <a href="{{ route('requests.create') }}"
-                       class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                        Create Request
-                    </a>
+                    @unless(auth()->user()->isAdministrator())
+                        <a href="{{ route('requests.create') }}"
+                           class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                            Create Request
+                        </a>
+                    @endunless
                 </div>
 
                 <form method="GET" action="{{ route('requests.index') }}" class="mb-6">

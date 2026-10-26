@@ -20,11 +20,13 @@ class ServiceRequestPolicy
 
     public function create(User $user): bool
     {
-        return true;
+        return ! $user->isAdministrator();
     }
 
-    public function updateStatus(User $user, ServiceRequest $serviceRequest): bool
-    {
+    public function updateStatus(
+        User $user,
+        ServiceRequest $serviceRequest
+    ): bool {
         return $user->isAdministrator();
     }
 }
