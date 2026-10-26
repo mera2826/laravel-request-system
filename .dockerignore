@@ -1,0 +1,14 @@
+
+.git
+.github
+.env
+.env.*
+!.env.container.example
+vendor
+node_modules
+tests
+.phpunit.result.cache
+Dockerfile*
+compose*.yaml
+docker-compose*.yml
+README.md
