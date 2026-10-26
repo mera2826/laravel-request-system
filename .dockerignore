@@ -1,14 +1,47 @@
 
+
 .git
 .github
 .env
 .env.*
 !.env.container.example
+
 vendor
 node_modules
 tests
 .phpunit.result.cache
+
 Dockerfile*
 compose*.yaml
 docker-compose*.yml
 README.md
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# Backups and archives
+*.bak
+*.backup
+*.old
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.sql
+*.dump
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
