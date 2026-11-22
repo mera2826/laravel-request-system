@@ -1,0 +1,26 @@
+﻿# LABORATORY 8 — RELEASE CHECKLIST
+
+Project: Laravel Request System
+Release: v1.0.0-lab8
+Prepared Date: November 20, 2026
+Source Commit: fad9b257ce6dda06dcc1ec6b0c58aa20f0655886
+
+## A. Local Build and Source Verification
+
+[✓] Confirm correct Git branch.
+[✓] Confirm source commit.
+[✓] Confirm Git working tree is clean.
+[✓] Build versioned Laravel application image.
+[✓] Build versioned Nginx web image.
+[✓] Verify Laravel application image.
+[✓] Verify Nginx configuration.
+[✓] Confirm Docker Compose services are running.
+[✓] Confirm database container is healthy.
+
+## B. Release Documentation
+
+[✓] Record release version.
+[✓] Record source commit.
+[✓] Record application image ID.
+[✓] Record Nginx image ID.
+[✓

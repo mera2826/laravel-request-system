@@ -1,0 +1,52 @@
+﻿# LABORATORY 8 — RELEASE NOTES
+
+## 1. Release Information
+
+Project: Laravel Request System
+Laboratory: Laboratory 8 — Deploy a Controlled Staging Release
+Release Version: v1.0.0-lab8
+Build Date: November 20, 2026
+Git Branch: feature/lab8-staging-release
+Source Commit: fad9b257ce6dda06dcc1ec6b0c58aa20f0655886
+Git Working Tree: Clean
+
+## 2. Local Release Artifacts
+
+### Laravel Application Image
+Image Tag: laravel-request-system-app:v1.0.0-lab8
+Image ID: sha256:ad17e0b4e4473cc3aa01bc4e9ec88fb7e394e7c81605b4da864e8e9d53d30229
+Build Result: SUCCESS
+
+### Nginx Web Image
+Image Tag: laravel-request-system-web:v1.0.0-lab8
+Image ID: sha256:d1aef24e48b5bac20edbfec9a3a68936612e2a1cb545c40b169bdb4ebfc89012
+Build Result: SUCCESS
+
+## 3. Verification Results
+
+1. Laravel application image Artisan version test — PASSED.
+2. Nginx configuration syntax test — PASSED.
+3. Nginx upstream hostname resolution on the Compose network — PASSED.
+4. Docker Compose application container — RUNNING.
+5. Docker Compose database container — RUNNING (HEALTHY).
+6. Docker Compose web container — RUNNING.
+7. Git source revision verification — PASSED.
+8. Git working tree verification — CLEAN.
+9. Previous local application smoke tests — PASSED.
+10. Previous local security tests — 4 TESTS PASSED, 9 ASSERTIONS.
+
+## 4. Important Deployment Status
+
+The versioned Docker images were built and verified locally.
+
+The images have NOT been published to a container registry or deployed to the instructor-managed staging environment.
+
+The instructor-managed staging target, deployment workflow, approval gate, and supplied faulty release artifact have not yet been provided or verified.
+
+Therefore, staging approval, staging deployment, faulty-release testing, rollback, and staging database recovery remain pending.
+
+## 5. Notes
+
+The Docker image IDs above identify the locally built images. They are not proof of a registry-published or staging-deployed artifact.
+
+The local Docker Compose environment is for development and verification only. It must not be reported as the instructor-managed staging environment.

@@ -1,0 +1,90 @@
+﻿# LABORATORY 8 — APPROVAL AND DEPLOYMENT LOG
+
+Project: Laravel Request System
+Release Candidate: v1.0.0-lab8
+Prepared Date: November 20, 2026
+Source Commit: fad9b257ce6dda06dcc1ec6b0c58aa20f0655886
+
+## 1. Staging Environment Information
+
+Staging Target: PENDING — Awaiting instructor instructions
+Deployment Workflow: PENDING — Awaiting instructor instructions
+Known-Good Release: PENDING — Awaiting instructor instructions
+Approver: PENDING
+Staging URL: PENDING
+
+## 2. Release Candidate Information
+
+Application Image: laravel-request-system-app:v1.0.0-lab8
+Application Image ID: sha256:ad17e0b4e4473cc3aa01bc4e9ec88fb7e394e7c81605b4da864e8e9d53d30229
+
+Nginx Image: laravel-request-system-web:v1.0.0-lab8
+Nginx Image ID: sha256:d1aef24e48b5bac20edbfec9a3a68936612e2a1cb545c40b169bdb4ebfc89012
+
+Source Branch: feature/lab8-staging-release
+Source Commit: fad9b257ce6dda06dcc1ec6b0c58aa20f0655886
+Working Tree: Clean
+
+## 3. Approval Record
+
+Workflow Run ID: PENDING
+Workflow Link: PENDING
+Approver Name: PENDING
+Approval Decision: NOT YET REQUESTED
+Approval Timestamp: PENDING
+CI Result: PENDING
+Artifact Verification: PENDING
+Migration Plan Review: PENDING
+
+## 4. Deployment Record
+
+Deployment Date and Time: PENDING
+Deployed Version: PENDING
+Deployed Artifact Digest: PENDING
+Migration Decision: PENDING
+Schema Recovery Point: PENDING
+Deployment Result: NOT YET DEPLOYED
+
+## 5. Staging Smoke-Test Record
+
+Health and Revision Check: PENDING
+Student Login: PENDING
+Create HDMI Adapter Request (STAGE-LIB-08): PENDING
+Reopen Created Request: PENDING
+Administrator Status Update: PENDING
+Student Status Update Restriction: PENDING
+
+Request ID: PENDING
+Test Execution Date: PENDING
+Overall Result: NOT YET TESTED
+
+## 6. Faulty Release and Rollback Record
+
+Faulty Artifact Version: PENDING — Awaiting instructor-supplied artifact
+Instructor Approval: PENDING
+Failed Test: PENDING
+Rollback Decision: PENDING
+Rollback Timestamp: PENDING
+Known-Good Release Restored: PENDING
+Post-Rollback Smoke Tests: PENDING
+Original Request Record Verified: PENDING
+
+## 7. Database Recovery Explanation
+
+Application rollback and database recovery are separate operations.
+
+Application rollback restores a previously working application artifact. It does not automatically reverse database migrations or restore deleted or modified records.
+
+Database recovery requires a separately planned and approved database backup or recovery procedure.
+
+Actual staging database backup, restoration, and verification: PENDING.
+
+## 8. Current Status
+
+LOCAL RELEASE PREPARATION: COMPLETED
+LOCAL IMAGE VERIFICATION: COMPLETED
+INSTRUCTOR-MANAGED STAGING DEPLOYMENT: PENDING
+APPROVAL GATE: PENDING
+FAULTY RELEASE AND ROLLBACK: PENDING
+
+No staging deployment, approval, or rollback is claimed in this document until supported by actual evidence.
