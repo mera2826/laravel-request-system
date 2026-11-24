@@ -1,0 +1,201 @@
+# LABORATORY 8 - APPROVAL AND DEPLOYMENT LOG
+
+Project: Laravel Request System
+Release Candidate: v1.0.0-lab8
+Prepared Date: November 20, 2026
+Original Release Source Commit: fad9b257ce6dda06dcc1ec6b0c58aa20f0655886
+
+## 1. Staging Environment Information
+
+Staging Target: Student-managed local staging environment on Michaela's Acer
+Deployment Workflow: Manual Docker Compose deployment
+Known-Good Release: v1.0.0-lab8
+Approver: Formal pre-deployment approval was not recorded
+Staging URL: http://127.0.0.1:8081
+
+Note: The student team established and operated its own staging environment. The instructor authorized the team to create the staging environment, deploy and test the release, and perform the faulty-release and rollback simulation.
+
+## 2. Release Candidate Information
+
+Application Image: laravel-request-system-app:v1.0.0-lab8
+Application Image ID: sha256:ad17e0b4e4473cc3aa01bc4e9ec88fb7e394e7c81605b4da864e8e9d53d30229
+
+Nginx Image: laravel-request-system-web:v1.0.0-lab8
+Nginx Image ID: sha256:d1aef24e48b5bac20edbfec9a3a68936612e2a1cb545c40b169bdb4ebfc89012
+
+Database Image: mysql:8.4
+Database Image ID: a81d043930e5
+
+Original Source Branch: feature/lab8-staging-release
+Original Source Commit: fad9b257ce6dda06dcc1ec6b0c58aa20f0655886
+Working Tree: Clean at original release preparation
+
+## 3. Approval Record
+
+Original Deployment Workflow: Manual Docker Compose deployment
+Workflow Run ID: Not applicable - manual deployment
+Approver Name: Not formally recorded before deployment
+Approval Decision: No documented formal pre-deployment approval
+Approval Timestamp: Not recorded
+
+Original Deployment CI Result: No automated CI workflow was used during the initial staging deployment.
+
+Note: The instructor authorized the student team to establish and operate its own staging environment and perform rollback testing. This authorization is not represented as a formal release approval.
+
+## 4. Initial Deployment Record
+
+Deployment Date and Time: November 2026 - exact timestamp not recorded
+Deployed Version: v1.0.0-lab8
+Application Image ID: ad17e0b4e447
+Nginx Image ID: d1aef24e48b5
+Migration Decision: Migrations executed successfully using php artisan migrate --force
+Migration Result: Six staging migrations completed successfully
+Deployment Result: SUCCESSFUL
+
+Staging services:
+- Laravel application: Running
+- MySQL database: Healthy
+- Nginx web server: Running
+
+Application configuration:
+- APP_DEBUG=false
+- MySQL 8.4
+- Persistent Docker database volume
+
+## 5. Staging Smoke-Test Record
+
+Health Endpoint: PASSED
+Staging Login Page: PASSED
+Student Login: PASSED
+Student Dashboard: PASSED
+Student Service Request Submission: PASSED
+Student Request Reopening: PASSED
+Administrator Login: PASSED
+Administrator Request Viewing: PASSED
+Administrator Request Approval: PASSED
+Administrator Status Update: PASSED
+Student Updated Status Visibility: PASSED
+Student Administrator-Action Restriction: PASSED
+
+Test Request Details:
+Request ID: 2
+Item: HDMI Adapter
+Quantity: 1
+Purpose: STAGE-LIB-08
+Initial Status: Pending
+Updated Status: Approved
+
+Existing Request ID 1 was not deleted or modified.
+
+Test Execution Date: November 2026 - exact date not recorded
+Overall Core Functional Result: PASSED
+
+## 6. Faulty Release and Rollback Record
+
+Fault Simulation: PERFORMED
+Instructor Authorization: AUTHORIZED
+Known-Good Release: v1.0.0-lab8
+
+Faulty Artifact Version: v1.0.1-lab8-fault
+Faulty Application Image: laravel-request-system-app:v1.0.1-lab8-fault
+Faulty Image ID: sha256:1f74ecc7db10d7731c985c9e61e0bbf4a1736def21d239b8c40798370e232c75
+
+Simulated Fault: Request creation page deliberately disabled through a simulated HTTP 503 response.
+
+Failed Smoke Test: Request creation page returned HTTP 503.
+Fault Verification: Confirmed through browser response and application logs.
+
+Rollback Decision: Restore the previously verified known-good application image.
+Rollback Method: Docker Compose application container replacement.
+Rollback Result: SUCCESSFUL
+
+Post-Rollback Verification:
+- Known-good application image restored.
+- MySQL database container remained unchanged.
+- Nginx web container remained unchanged.
+- Database remained healthy.
+- Request creation page restored.
+- Original Request ID 2 remained in the database.
+- Request purpose STAGE-LIB-08 remained unchanged.
+- Request status remained Approved.
+
+Database Record Preservation: VERIFIED
+Overall Rollback Result: SUCCESSFUL
+
+## 7. Database Backup and Recovery Explanation
+
+Application rollback and database recovery are separate operations.
+
+Application rollback restores a previously working application artifact. It does not automatically reverse database migrations or restore deleted or modified records.
+
+Database recovery requires a separately planned database backup and restoration procedure.
+
+Staging Database Backup: CREATED
+Backup Method: mysqldump
+Database: laravel_request_staging_db
+Database Server: MySQL 8.4.13
+Backup File: lab8-evidence/staging-db-backup.sql
+Backup Command Exit Code: 0
+Backup File Size: 12,636 bytes
+
+Backup Verification:
+- Backup file created successfully.
+- Table definitions verified.
+- INSERT statements verified.
+- STAGE-LIB-08 record found in backup contents.
+
+Actual Database Restoration Test: NOT PERFORMED
+
+Note: The backup was created and its contents were checked. A separate restoration test was not completed. Therefore, database restoration is not claimed as verified.
+
+## 8. Automated CI Workflow Record
+
+Automated CI Workflow: Laravel CI
+Workflow File: .github/workflows/laravel-ci.yml
+CI Configuration Date: November 23, 2026
+Branch: feature/lab8-staging-release
+
+Initial CI Commit: 5da4f1b
+Initial CI Result: FAILED
+
+Initial Failure Cause:
+The GitHub Actions runner did not have the Vite build manifest at public/build/manifest.json. Laravel page-rendering tests consequently returned HTTP 500 responses.
+
+Corrective Commit: fa5c729
+Corrective Change:
+- Added Node.js setup using actions/setup-node@v4.
+- Added npm ci to install frontend dependencies.
+- Added npm run build to generate frontend assets before running Laravel tests.
+
+Latest CI Workflow Run: #2
+Workflow Run ID: 45143028452
+Workflow Result: SUCCESSFUL
+Branch: feature/lab8-staging-release
+Commit: fa5c729
+
+Workflow Link:
+https://github.com/mera2826/laravel-request-system/actions/runs/45143028452
+
+Important Note: Automated CI was configured after the initial staging deployment. The successful CI result verifies the later automated workflow and does not retroactively represent an approval gate for the original deployment.
+
+## 9. Current Status
+
+LOCAL RELEASE PREPARATION: COMPLETED
+STUDENT-MANAGED STAGING DEPLOYMENT: COMPLETED
+DEPLOYED IMAGE VERIFICATION: PASSED
+DATABASE MIGRATIONS: COMPLETED
+CORE FUNCTIONAL TESTING: PASSED
+STUDENT AUTHORIZATION TEST: PASSED
+FAULTY RELEASE SIMULATION: COMPLETED
+HTTP 503 FAILURE VERIFICATION: COMPLETED
+APPLICATION ROLLBACK: SUCCESSFUL
+DATABASE RECORD PRESERVATION: VERIFIED
+DATABASE BACKUP: CREATED AND VERIFIED
+DATABASE RESTORATION TEST: NOT PERFORMED
+FORMAL PRE-DEPLOYMENT APPROVAL RECORD: NOT RECORDED
+AUTOMATED CI WORKFLOW: CONFIGURED
+LATEST AUTOMATED CI RUN: SUCCESSFUL
+FINAL PARTNER REVIEW: COMPLETED (reviewed and approved by partner on November 24, 2026) CONFIRMATION
+FINAL REPORT SUBMISSION: PENDING
+
+This log records the actual student-managed staging deployment, testing, rollback, database backup, and subsequent CI configuration. It does not claim instructor-managed deployment, formal pre-deployment approval, or database restoration testing that did not occur.

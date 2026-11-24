@@ -1,0 +1,189 @@
+# LABORATORY 8 - RELEASE NOTES
+
+## 1. Release Information
+
+Project: Laravel Request System
+Laboratory: Laboratory 8 - Deploy a Controlled Staging Release
+Release Version: v1.0.0-lab8
+Build Date: November 20, 2026
+Git Branch: feature/lab8-staging-release
+Original Release Source Commit: fad9b257ce6dda06dcc1ec6b0c58aa20f0655886
+Git Working Tree: Clean at original release preparation
+
+## 2. Local Release Artifacts
+
+### Laravel Application Image
+
+Image Tag: laravel-request-system-app:v1.0.0-lab8
+Image ID: sha256:ad17e0b4e4473cc3aa01bc4e9ec88fb7e394e7c81605b4da864e8e9d53d30229
+Build Result: SUCCESS
+
+### Nginx Web Image
+
+Image Tag: laravel-request-system-web:v1.0.0-lab8
+Image ID: sha256:d1aef24e48b5bac20edbfec9a3a68936612e2a1cb545c40b169bdb4ebfc89012
+Build Result: SUCCESS
+
+## 3. Release Verification Results
+
+1. Laravel application image Artisan version test - PASSED.
+2. Nginx configuration syntax test - PASSED.
+3. Nginx upstream hostname resolution on the Compose network - PASSED.
+4. Docker Compose application container - RUNNING.
+5. Docker Compose database container - RUNNING (HEALTHY).
+6. Docker Compose web container - RUNNING.
+7. Git source revision verification - PASSED.
+8. Original release working tree verification - CLEAN.
+9. Previous local application smoke tests - PASSED.
+10. Previous local security tests - 4 TESTS PASSED, 9 ASSERTIONS.
+
+## 4. Staging Deployment Information
+
+Staging Target: Student-managed local staging environment on Michaela's Acer
+Deployment Method: Manual Docker Compose deployment
+Staging URL: http://127.0.0.1:8081
+Known-Good Release: v1.0.0-lab8
+Database: MySQL 8.4
+Application Debug Mode: APP_DEBUG=false
+
+The student team established and operated its own staging environment. The instructor authorized the team to create the staging environment, deploy and test the release, and perform the faulty-release and rollback simulation.
+
+The deployment was not performed on an instructor-managed staging environment.
+
+Deployment Result: SUCCESSFUL
+
+Six database migrations completed successfully. The Laravel application, MySQL database, and Nginx web server were verified running.
+
+## 5. Functional Smoke-Test Results
+
+- Staging health endpoint - PASSED.
+- Staging login page - PASSED.
+- Student login and dashboard - PASSED.
+- Student service request submission - PASSED.
+- Student request reopening - PASSED.
+- Administrator login - PASSED.
+- Administrator request viewing - PASSED.
+- Administrator request approval and status update - PASSED.
+- Student visibility of updated request status - PASSED.
+- Student restriction from administrator actions - PASSED.
+
+Test Request:
+Request ID: 2
+Item: HDMI Adapter
+Quantity: 1
+Purpose: STAGE-LIB-08
+Initial Status: Pending
+Updated Status: Approved
+
+Existing Request ID 1 was not deleted or modified.
+
+Overall Core Functional Result: PASSED
+
+## 6. Faulty Release and Application Rollback
+
+Fault Simulation: COMPLETED
+Instructor Authorization: AUTHORIZED
+Known-Good Release: v1.0.0-lab8
+
+Faulty Image Tag: laravel-request-system-app:v1.0.1-lab8-fault
+Faulty Image ID: sha256:1f74ecc7db10d7731c985c9e61e0bbf4a1736def21d239b8c40798370e232c75
+
+Simulated Fault: Request creation page deliberately disabled through a simulated HTTP 503 response.
+
+Failure Verification:
+- Request creation page returned HTTP 503.
+- Failure was confirmed through the browser response and application logs.
+
+Rollback Method: Docker Compose application container replacement.
+Rollback Result: SUCCESSFUL
+
+Post-Rollback Verification:
+- Known-good application image restored.
+- MySQL database container remained unchanged and healthy.
+- Nginx web container remained unchanged.
+- Request creation page restored.
+- Request ID 2 remained in the database.
+- STAGE-LIB-08 purpose remained unchanged.
+- Request status remained Approved.
+
+Database Record Preservation: VERIFIED
+
+## 7. Database Backup and Recovery
+
+Database Backup: CREATED
+Backup Method: mysqldump
+Database: laravel_request_staging_db
+Database Server: MySQL 8.4.13
+Backup File: lab8-evidence/staging-db-backup.sql
+Backup File Size: 12,636 bytes
+Backup Command Exit Code: 0
+
+Backup Verification:
+- Backup file created successfully.
+- Table definitions verified.
+- INSERT statements verified.
+- STAGE-LIB-08 record found in backup contents.
+
+Separate Database Restoration Test: NOT PERFORMED
+
+Application rollback and database restoration are separate recovery operations. The application rollback was successful, but an actual database restoration test was not completed. No claim of verified database restoration is made.
+
+## 8. Automated CI Workflow
+
+Automated CI Workflow: Laravel CI
+Workflow File: .github/workflows/laravel-ci.yml
+Configuration Date: November 23, 2026
+Branch: feature/lab8-staging-release
+
+Initial CI Commit: 5da4f1b
+Initial CI Result: FAILED
+
+Initial Failure Cause:
+The GitHub Actions runner did not have the Vite build manifest at public/build/manifest.json, causing Laravel page-rendering tests to return HTTP 500 responses.
+
+Corrective Commit: fa5c729
+
+Corrective Changes:
+- Added Node.js setup using actions/setup-node@v4.
+- Added npm ci to install frontend dependencies.
+- Added npm run build to generate frontend assets before Laravel tests.
+
+Latest CI Workflow Run: #2
+Workflow Run ID: 45143028452
+Workflow Result: SUCCESSFUL
+Commit: fa5c729
+
+Workflow Link:
+https://github.com/mera2826/laravel-request-system/actions/runs/45143028452
+
+Important Note:
+Automated CI was configured after the initial staging deployment. The successful CI run verifies the later automated workflow and does not retroactively represent an approval gate for the original deployment.
+
+## 9. Deployment Limitations and Remaining Items
+
+Formal Pre-Deployment Approval: NOT RECORDED
+Approval Timestamp: NOT RECORDED
+Instructor-Managed Staging Deployment: NOT PERFORMED
+Container Registry Publication: NOT PERFORMED
+Separate Database Restoration Test: NOT PERFORMED
+
+Final Partner Review: COMPLETED (reviewed and approved on November 24, 2026)
+Final Report Submission: PENDING
+
+## 10. Overall Release Status
+
+Local Release Preparation: COMPLETED
+Student-Managed Staging Deployment: COMPLETED
+Release Artifact Verification: PASSED
+Database Migrations: COMPLETED
+Core Functional Smoke Tests: PASSED
+Faulty Release Simulation: COMPLETED
+HTTP 503 Failure Verification: COMPLETED
+Application Rollback: SUCCESSFUL
+Database Record Preservation: VERIFIED
+Database Backup: CREATED AND VERIFIED
+Database Restoration Test: NOT PERFORMED
+Subsequent Automated CI Workflow: CONFIGURED
+Latest Automated CI Run: SUCCESSFUL
+
+This release note documents the actual student-managed staging deployment, functional testing, authorized faulty-release simulation, application rollback, database backup, and subsequent CI configuration. It does not claim instructor-managed deployment, formal pre-deployment approval, container registry publication, or a completed database restoration test.
