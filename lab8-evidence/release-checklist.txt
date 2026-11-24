@@ -1,4 +1,4 @@
-﻿# LABORATORY 8 — RELEASE CHECKLIST
+# LABORATORY 8 - RELEASE CHECKLIST
 
 Project: Laravel Request System
 Release: v1.0.0-lab8
@@ -9,7 +9,7 @@ Source Commit: fad9b257ce6dda06dcc1ec6b0c58aa20f0655886
 
 [✓] Confirm correct Git branch.
 [✓] Confirm source commit.
-[✓] Confirm Git working tree is clean.
+[✓] Confirm Git working tree is clean at original release preparation.
 [✓] Build versioned Laravel application image.
 [✓] Build versioned Nginx web image.
 [✓] Verify Laravel application image.
@@ -23,4 +23,124 @@ Source Commit: fad9b257ce6dda06dcc1ec6b0c58aa20f0655886
 [✓] Record source commit.
 [✓] Record application image ID.
 [✓] Record Nginx image ID.
-[✓
+[✓] Prepare release notes.
+[✓] Prepare approval and deployment log.
+[✓] Document actual deployment environment.
+
+## C. Approval Gate and CI
+
+[ ] Formal pre-deployment approval documented for original deployment.
+[ ] Approval timestamp recorded for original deployment.
+[✓] Document instructor authorization for student-managed staging and rollback simulation.
+[✓] Configure subsequent automated Laravel CI workflow.
+[✓] Record initial CI failure and corrective change.
+[✓] Record successful GitHub Actions workflow run #2.
+
+Note: The original staging deployment was manual. Formal pre-deployment approval was not recorded, and automated CI was configured afterward. The later successful CI run does not retroactively serve as the original deployment approval gate.
+
+## D. Staging Deployment
+
+[✓] Prepare student-managed staging environment on Michaela's Acer.
+[✓] Transfer and load versioned application image.
+[✓] Transfer and load versioned Nginx image.
+[✓] Deploy using Docker Compose.
+[✓] Confirm Laravel application is running.
+[✓] Confirm MySQL database is healthy.
+[✓] Confirm Nginx web server is running.
+[✓] Verify deployed image tags and IDs.
+[✓] Execute six database migrations successfully.
+[✓] Verify staging health endpoint.
+[✓] Verify staging login page.
+
+## E. Functional Smoke Tests
+
+[✓] Student login.
+[✓] Student dashboard access.
+[✓] Student service request submission.
+[✓] Student can reopen the submitted request.
+[✓] Administrator login.
+[✓] Administrator request viewing.
+[✓] Administrator request approval.
+[✓] Administrator status update.
+[✓] Student can view updated request status.
+[✓] Student cannot perform administrator approval actions.
+
+Test Request:
+Request ID: 2
+Item: HDMI Adapter
+Quantity: 1
+Purpose: STAGE-LIB-08
+Initial Status: Pending
+Updated Status: Approved
+
+## F. Faulty Release and Application Rollback
+
+[✓] Obtain instructor authorization for a safe rollback simulation.
+[✓] Prepare the faulty-release test.
+[✓] Deploy simulated faulty application image.
+[✓] Record HTTP 503 request-creation failure.
+[✓] Verify failure through browser response and application logs.
+[✓] Restore the known-good application image.
+[✓] Verify application image after rollback.
+[✓] Verify database and web services after rollback.
+[✓] Verify request creation page is restored.
+[✓] Verify original Request ID 2 remains available.
+[✓] Verify request purpose and Approved status remain unchanged.
+
+Rollback Result: SUCCESSFUL
+
+## G. Database Backup and Recovery
+
+[✓] Create staging database backup.
+[✓] Verify backup file exists and is non-empty.
+[✓] Document database backup location.
+[✓] Verify table definitions and INSERT statements.
+[✓] Verify STAGE-LIB-08 record in backup contents.
+[ ] Perform separate database restoration test.
+[ ] Verify records through an actual database restoration.
+[✓] Document database recovery limitations and result.
+
+Backup File: lab8-evidence/staging-db-backup.sql
+Database: laravel_request_staging_db
+Backup Size: 12,636 bytes
+Backup Command Exit Code: 0
+
+Note: The backup was created and its contents were checked. A separate database restoration test was not performed. Application rollback was completed successfully, but it is not equivalent to database restoration.
+
+## H. Final Evidence and Documentation
+
+[✓] Save deployed image verification evidence.
+[✓] Save staging health endpoint evidence.
+[✓] Save student request submission evidence.
+[✓] Save administrator request approval evidence.
+[✓] Save student updated status evidence.
+[✓] Save student authorization restriction evidence.
+[✓] Save database backup evidence.
+[✓] Save faulty-release and HTTP 503 evidence.
+[✓] Save application rollback evidence.
+[✓] Save database record preservation evidence.
+[✓] Update release notes.
+[✓] Update approval and deployment log.
+[✓] Update release checklist.
+[✓] Prepare combined laboratory report with screenshots.
+
+[✓] Complete final partner review (reviewed and approved by Michaela Pauline Deticio on November 24, 2026).
+[ ] Complete final report submission.
+
+## Overall Status
+
+Release preparation: COMPLETED
+Student-managed staging deployment: COMPLETED
+Core functional testing: COMPLETED
+Faulty release simulation: COMPLETED
+Application rollback: SUCCESSFUL
+Database record preservation: VERIFIED
+Database backup: CREATED AND VERIFIED
+Database restoration test: NOT PERFORMED
+Formal pre-deployment approval record: NOT RECORDED
+Subsequent automated CI workflow: CONFIGURED
+Latest automated CI run: SUCCESSFUL
+Final partner review: COMPLETED
+Final report submission: PENDING
+
+This checklist reflects the actual student-managed staging deployment, functional tests, authorized faulty-release simulation, application rollback, database backup, and subsequent CI configuration. It does not claim formal pre-deployment approval or a completed database restoration test.
