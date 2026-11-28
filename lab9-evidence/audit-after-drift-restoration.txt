@@ -1,0 +1,31 @@
+﻿
+LABORATORY 9 - CONFIGURATION AUDIT
+Laravel version: 12.69.2
+PHP version: 8.3.37
+Target: Dell disposable Lab 9 clone
+Secrets are not displayed.
+
+[PASS] Application environment - Effective environment matches baseline.
+[PASS] Application debug mode - Effective debug setting matches baseline.
+[PASS] Application key - Application key is configured; value withheld.
+[PASS] Baseline entry: document_root.expected_document_root - Required nonsecret baseline entry is present.
+[PASS] Baseline entry: writable_paths.expected_writable_paths - Required nonsecret baseline entry is present.
+[PASS] Baseline entry: service_identity.expected_application_user - Required nonsecret baseline entry is present.
+[PASS] Baseline entry: database_access.expected_database_access - Required nonsecret baseline entry is present.
+[PASS] Baseline entry: exposed_services.expected_web_binding - Required nonsecret baseline entry is present.
+[PASS] Baseline entry: tls.expected_tls_configuration - Required nonsecret baseline entry is present.
+[UNVERIFIED] Document root - See sanitized Nginx configuration evidence.
+[UNVERIFIED] Writable path permissions - See www-data write-test and ownership evidence.
+[UNVERIFIED] Service identities - See Docker process identity evidence.
+[UNVERIFIED] Container security settings - See Docker inspect evidence; writable root filesystem requires hardening review.
+[UNVERIFIED] Database network exposure - See Docker port and internal network evidence.
+[UNVERIFIED] Database connectivity - See Laravel db:show evidence; migration table is absent in the disposable clone.
+[UNVERIFIED] TLS configuration - No SSL directives found; external HTTPS deployment remains unverified.
+[UNVERIFIED] Patch responsibilities - Requires confirmation of responsible maintainers.
+[UNVERIFIED] Secrets handling and access - Git exclusion is verified; access control, rotation, and revocation need documentation.
+
+AUDIT SUMMARY
+PASS: 9
+FAIL: 0
+UNVERIFIED: 9
+AUDIT RESULT: AUTOMATED BASELINE CHECKS PASSED; external checks remain unverified.

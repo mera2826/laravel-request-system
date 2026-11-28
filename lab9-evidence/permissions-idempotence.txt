@@ -1,0 +1,28 @@
+﻿LABORATORY 9 - CONFIGURATION IDEMPOTENCE TEST
+
+Target: Dell disposable Lab 9 Docker clone
+Demo path: /tmp/lab9-permissions-demo
+
+Initial state:
+Permissions: 755
+Owner: www-data
+Group: www-data
+
+Configuration applied:
+chmod 750 /tmp/lab9-permissions-demo
+
+After first application:
+Permissions: 750
+Owner: www-data
+Group: www-data
+
+After second application:
+Permissions: 750
+Owner: www-data
+Group: www-data
+
+Result:
+PASS - The same configuration was applied twice.
+The resulting permissions, owner, and group remained unchanged
+after the second application. This demonstrates idempotent
+behavior for the tested permissions task.

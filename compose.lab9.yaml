@@ -1,0 +1,49 @@
+
+services:
+  web:
+    image: laravel-request-system-web:v1.0.0-lab8
+    ports:
+      - "127.0.0.1:8082:80"
+    depends_on:
+      app:
+        condition: service_started
+    networks:
+      - lab9-network
+    restart: unless-stopped
+
+  app:
+    image: laravel-request-system-app:v1.0.0-lab8
+    env_file:
+      - .env.staging
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - lab9-network
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:?Set DB_DATABASE in .env.staging}
+      MYSQL_USER: ${DB_USERNAME:?Set DB_USERNAME in .env.staging}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env.staging}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Set DB_ROOT_PASSWORD in .env.staging}
+    volumes:
+      - lab9_db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p$${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - lab9-network
+    restart: unless-stopped
+
+networks:
+  lab9-network:
+    driver: bridge
+
+volumes:
+  lab9_db_data:
