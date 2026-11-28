@@ -1,0 +1,55 @@
+﻿
+# Prepared by / Driver: Althea Mera M. Lascota
+# Partner / Reviewer: Michaela Pauline Deticio
+# Laboratory: 9 - Audit and Automate Secure Configuration
+# Project: Laravel Request System
+# Target: Dell disposable Lab 9 Docker clone
+# Original staging target: Michaela Acer, 127.0.0.1:8081
+# Lab 9 disposable endpoint: 127.0.0.1:8082
+# Source: Lab 8 known-good staging images
+# Starting staging revision: 6dadc856f73ae464c9c7b3d1c2e52aeb9e0cb60c
+# Laravel version: 12.69.2
+
+[environment]
+approved_environment_label=staging
+expected_app_env=staging
+expected_app_debug=false
+
+[document_root]
+expected_document_root=/var/www/html/public
+expected_public_entry_point=index.php
+
+[writable_paths]
+expected_writable_paths=storage,bootstrap/cache
+expected_permissions=755
+expected_owner=www-data
+
+[service_identity]
+expected_application_user=www-data
+expected_web_worker_user=nginx
+expected_web_master_user=root
+expected_database_process_uid=999
+expected_database_connection_user=staging_user
+
+[container_security]
+expected_privileged=false
+expected_read_only_root_filesystem=false
+
+[database_access]
+expected_database_access=application-to-database-through-internal-staging-network
+expected_host_published_database_port=none
+expected_database_connection=successful
+
+[exposed_services]
+expected_web_binding=127.0.0.1:8082
+expected_application_host_port=none
+expected_database_host_port=none
+
+[tls]
+expected_tls_configuration=not-configured
+expected_endpoint_protocol=http
+
+[secrets]
+secrets_in_version_control=false
+secret_values_in_audit_output=false
+staging_environment_file_ignored=true

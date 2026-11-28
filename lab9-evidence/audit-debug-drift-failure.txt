@@ -1,0 +1,19 @@
+﻿LABORATORY 9 - CONFIGURATION DRIFT DETECTION
+
+Test: Temporary APP_DEBUG=true override
+Target: Dell disposable Lab 9 Docker clone
+
+[PASS] Application environment
+[FAIL] Application debug mode - Effective debug setting does not match baseline.
+
+AUDIT SUMMARY
+PASS: 8
+FAIL: 1
+UNVERIFIED: 9
+
+AUDIT RESULT: UNSUCCESSFUL - required checks failed.
+
+Conclusion:
+The audit successfully detected that debug mode was enabled
+when the approved baseline required it to be disabled.
+The command-level environment override was temporary.

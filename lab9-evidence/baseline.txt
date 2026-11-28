@@ -1,0 +1,94 @@
+﻿# LABORATORY 9 - SECURE CONFIGURATION BASELINE
+
+## 1. Audit Information
+
+Project: Laravel Request System
+Laboratory: Laboratory 9 - Audit and Automate Secure Configuration
+Date: November 28, 2026
+Driver: Althea Mera M. Lascota
+Partner / Reviewer: Michaela Pauline Deticio
+Workstation: Dell
+Git Branch: feature/lab9-config-audit
+Lab 8 merged Git commit: fae8773
+Source staging revision: 6dadc856f73ae464c9c7b3d1c2e52aeb9e0cb60c
+
+## 2. Target Environment
+
+Target: Dell disposable Lab 9 Docker clone
+Original staging target: Michaela Acer
+Original staging endpoint: 127.0.0.1:8081
+Disposable clone endpoint: 127.0.0.1:8082
+Application environment: staging
+Debug mode: OFF
+
+## 3. Software Baseline
+
+Laravel Framework: 12.69.2
+PHP inside disposable application container: 8.3.37
+MySQL: 8.4.13
+Docker Engine: 29.9.2
+Docker Compose: 5.6.1
+
+## 4. Docker Services
+
+Application Container: laravel-request-system-lab9-app-1
+Web Container: laravel-request-system-lab9-web-1
+Database Container: laravel-request-system-lab9-db-1
+
+Application Runtime User: www-data (UID 33, GID 33)
+Nginx Master Process: root
+Nginx Worker Processes: nginx
+Database Process UID: 999
+
+Privileged Mode: Disabled on all three containers
+Read-only Root Filesystem: Disabled on all three containers
+
+## 5. Network and Database
+
+Web Host Binding: 127.0.0.1:8082
+Application Host Port: Not published
+Database Host Port: Not published
+Internal Docker Network: laravel-request-system-lab9_lab9-network
+
+Database Connection: Successful
+Database Connection User: staging_user
+Database Host: db
+Database Port: 3306
+Database Migration Table: Not present in disposable clone
+
+## 6. Application Configuration
+
+Document Root: /var/www/html/public
+Writable Paths: storage, bootstrap/cache
+Observed Permissions: 755
+Observed Owner: www-data
+Observed Group: www-data
+
+TLS: Not configured in the disposable clone
+Endpoint Protocol: HTTP
+
+## 7. Configuration Audit Results
+
+Initial baseline audit: 9 PASS, 0 FAIL, 9 UNVERIFIED
+Temporary debug drift test: 8 PASS, 1 FAIL, 9 UNVERIFIED
+Restoration audit: 9 PASS, 0 FAIL, 9 UNVERIFIED
+
+## 8. Configuration Idempotence
+
+Test Directory: /tmp/lab9-permissions-demo
+Initial Permissions: 755
+After First Application: 750
+After Second Application: 750
+Owner and Group: www-data
+Result: PASS
+
+## 9. Scope and Limitations
+
+This baseline describes the Dell disposable Lab 9 clone only.
+It does not establish that the original staging environment on Michaela's Acer has identical runtime configurations.
+
+The writable container root filesystem, lack of TLS, patch responsibilities, and secrets access controls require further review or documentation.
+
+The database connection was verified, but the disposable database had no migration table.
+
+No application keys, passwords, tokens, or database secret values are recorded in this document.
